@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct CafeManuscritApp: App {
@@ -13,5 +14,6 @@ struct CafeManuscritApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(SwiftDataManager.shared.container)
     }
 }

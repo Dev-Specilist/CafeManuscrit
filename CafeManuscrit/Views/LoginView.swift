@@ -127,18 +127,12 @@ struct LoginView: View {
         isLoading = true
         
         // TODO: 실제 Apple Sign In 구현
-        // 현재는 더미 로그인
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            let dummyUser = User(
-                id: "apple_\(UUID().uuidString)",
-                name: "Apple 사용자",
-                email: "apple@example.com",
-                profileImageUrl: nil,
-                createdAt: Date()
-            )
-            
-            appViewModel.login(user: dummyUser, token: "apple_dummy_token")
-            isLoading = false
+        // 현재는 더미 idToken 사용
+        Task {
+            await appViewModel.login(provider: .apple, idToken: "dummy_apple_id_token")
+            await MainActor.run {
+                isLoading = false
+            }
         }
     }
     
@@ -146,18 +140,12 @@ struct LoginView: View {
         isLoading = true
         
         // TODO: 실제 Google Sign In 구현
-        // 현재는 더미 로그인
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            let dummyUser = User(
-                id: "google_\(UUID().uuidString)",
-                name: "Google 사용자",
-                email: "google@example.com",
-                profileImageUrl: nil,
-                createdAt: Date()
-            )
-            
-            appViewModel.login(user: dummyUser, token: "google_dummy_token")
-            isLoading = false
+        // 현재는 더미 idToken 사용
+        Task {
+            await appViewModel.login(provider: .google, idToken: "dummy_google_id_token")
+            await MainActor.run {
+                isLoading = false
+            }
         }
     }
 }
