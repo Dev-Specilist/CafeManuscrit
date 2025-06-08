@@ -60,7 +60,7 @@ class SwiftDataManager: ObservableObject {
     }
     
     func getCurrentUser() throws -> User? {
-        let descriptor = FetchDescriptor<UserModel>(
+        var descriptor = FetchDescriptor<UserModel>(
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
         )
         descriptor.fetchLimit = 1
@@ -140,7 +140,7 @@ class SwiftDataManager: ObservableObject {
     }
     
     func fetchFeaturedRecipes() throws -> [Recipe] {
-        let descriptor = FetchDescriptor<RecipeModel>(
+        var descriptor = FetchDescriptor<RecipeModel>(
             predicate: #Predicate<RecipeModel> { $0.rating >= 4.5 },
             sortBy: [SortDescriptor(\.rating, order: .reverse)]
         )
@@ -220,7 +220,7 @@ class SwiftDataManager: ObservableObject {
     }
     
     func isBookmarked(userId: String, recipeId: String) throws -> Bool {
-        let descriptor = FetchDescriptor<BookmarkModel>(
+        var descriptor = FetchDescriptor<BookmarkModel>(
             predicate: #Predicate<BookmarkModel> {
                 $0.user?.id == userId && $0.recipe?.id == recipeId
             }

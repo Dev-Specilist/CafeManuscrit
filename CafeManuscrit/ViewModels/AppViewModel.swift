@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class AppViewModel: ObservableObject {
     @Published var appState: AppState = .loading
     @Published var isLoggedIn: Bool = false

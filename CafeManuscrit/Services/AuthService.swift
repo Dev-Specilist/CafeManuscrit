@@ -43,7 +43,7 @@ class AuthService: ObservableObject {
         }
     }
     
-    nonisolated func refreshToken() async -> Result<String, AuthError> {
+    func refreshToken() async -> Result<String, AuthError> {
         guard let refreshToken = keychainManager.getRefreshToken() else {
             return .failure(.noRefreshToken)
         }
@@ -78,7 +78,7 @@ class AuthService: ObservableObject {
         }
     }
     
-    nonisolated func isLoggedIn() -> Bool {
+    func isLoggedIn() -> Bool {
         return keychainManager.getAccessToken() != nil
     }
     
