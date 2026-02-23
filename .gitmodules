@@ -1,0 +1,3 @@
+[submodule "cafe-manuscrit"]
+	path = cafe-manuscrit
+	url = git@github.com:Dev-Specilist/cafe-manuscrit.git
