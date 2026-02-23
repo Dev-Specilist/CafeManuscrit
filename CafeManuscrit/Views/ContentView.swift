@@ -8,6 +8,7 @@ import SwiftUI
 
 struct ContentView: View{
     @StateObject private var appViewModel = AppViewModel()
+    @StateObject private var recipeRepository = RecipeRepository()
     
     var body: some View {
         Group {
@@ -17,13 +18,11 @@ struct ContentView: View{
             case .main:
                 MainTabView()
                     .environmentObject(appViewModel)
+                    .environmentObject(recipeRepository)
             case .loginRequired:
                 LoginView()
                     .environmentObject(appViewModel)
             }
-        }
-        .onAppear {
-            appViewModel.checkAuthStatus()
         }
     }
 }

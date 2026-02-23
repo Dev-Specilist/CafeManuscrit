@@ -17,30 +17,30 @@ enum RoastLevel: String, CaseIterable, Codable {
     var displayName: String {
         switch self {
         case .light:
-            return "라이트 로스트"
+            return L10n.text("domain.roast_level.light", default: "Light Roast")
         case .mediumLight:
-            return "미디엄 라이트"
+            return L10n.text("domain.roast_level.medium_light", default: "Medium Light")
         case .medium:
-            return "미디엄"
+            return L10n.text("domain.roast_level.medium", default: "Medium")
         case .mediumDark:
-            return "미디엄 다크"
+            return L10n.text("domain.roast_level.medium_dark", default: "Medium Dark")
         case .dark:
-            return "다크 로스트"
+            return L10n.text("domain.roast_level.dark", default: "Dark Roast")
         }
     }
     
     var color: String {
         switch self {
         case .light:
-            return "🤎"
+            return "#B17A4B"
         case .mediumLight:
-            return "🤎"
+            return "#9A6338"
         case .medium:
-            return "🤎"
+            return "#7E4F2E"
         case .mediumDark:
-            return "🖤"
+            return "#4A2E1F"
         case .dark:
-            return "⚫"
+            return "#1A1A1A"
         }
     }
 }

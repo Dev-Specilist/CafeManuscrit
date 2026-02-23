@@ -18,17 +18,17 @@ enum BrewMethod: String, CaseIterable, Codable {
     var displayName: String {
         switch self {
         case .v60:
-            return "V60"
+            return L10n.text("domain.brew_method.v60", default: "V60")
         case .chemex:
-            return "케멕스"
+            return L10n.text("domain.brew_method.chemex", default: "Chemex")
         case .aeropress:
-            return "에어로프레스"
+            return L10n.text("domain.brew_method.aeropress", default: "AeroPress")
         case .frenchPress:
-            return "프렌치프레스"
+            return L10n.text("domain.brew_method.french_press", default: "French Press")
         case .pourOver:
-            return "푸어오버"
+            return L10n.text("domain.brew_method.pour_over", default: "Pour Over")
         case .kalita:
-            return "칼리타 웨이브"
+            return L10n.text("domain.brew_method.kalita", default: "Kalita Wave")
         }
     }
     

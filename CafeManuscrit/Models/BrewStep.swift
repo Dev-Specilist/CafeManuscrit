@@ -11,7 +11,7 @@ struct BrewStep: Identifiable, Codable {
     let id = UUID()
     let stepNumber: Int
     let instruction: String
-    let timeFromStart: TimeInterval? // 시작부터 경과 시간 (초)
+    let timeFromStart: TimeInterval? // elapsed time from start (seconds)
     let waterAmount: Int? // ml
     let notes: String?
     
@@ -21,44 +21,44 @@ struct BrewStep: Identifiable, Codable {
             case timeFromStart
             case waterAmount
             case notes
-            // id는 제외 - 디코딩/인코딩하지 않음
+            // Exclude id from encoding/decoding
         }
     
     static let dummySteps: [BrewStep] = [
         BrewStep(
             stepNumber: 1,
-            instruction: "필터를 접어서 드리퍼에 넣고 뜨거운 물로 헹궈주세요.",
+            instruction: "Fold the paper filter, place it in the dripper, and rinse with hot water.",
             timeFromStart: 0,
             waterAmount: nil,
-            notes: "종이 냄새 제거"
+            notes: "Remove paper taste"
         ),
         BrewStep(
             stepNumber: 2,
-            instruction: "중간 굵기로 갈은 커피 원두 20g을 넣어주세요.",
+            instruction: "Add 20g of medium-ground coffee.",
             timeFromStart: 30,
             waterAmount: nil,
-            notes: "소금 정도의 굵기"
+            notes: "Texture similar to table salt"
         ),
         BrewStep(
             stepNumber: 3,
-            instruction: "30초간 블루밍을 위해 50ml의 물을 부어주세요.",
+            instruction: "Pour 50ml for a 30-second bloom.",
             timeFromStart: 60,
             waterAmount: 50,
-            notes: "원두 전체가 젖도록"
+            notes: "Wet all grounds evenly"
         ),
         BrewStep(
             stepNumber: 4,
-            instruction: "원을 그리며 천천히 150ml를 더 부어주세요.",
+            instruction: "Pour another 150ml slowly in circular motions.",
             timeFromStart: 90,
             waterAmount: 150,
-            notes: "2분 30초까지"
+            notes: "Reach this step by 2:30"
         ),
         BrewStep(
             stepNumber: 5,
-            instruction: "마지막으로 100ml를 부어 총 300ml가 되도록 해주세요.",
+            instruction: "Finish with 100ml, totaling 300ml.",
             timeFromStart: 150,
             waterAmount: 100,
-            notes: "4분 안에 완료"
+            notes: "Complete within 4 minutes"
         )
     ]
 }

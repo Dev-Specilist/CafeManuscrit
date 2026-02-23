@@ -86,7 +86,7 @@ struct FeaturedRecipeCard: View {
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
                     
-                    Text(recipe.author.name)
+                    Text(String(format: L10n.text("common.recipe.by_author", default: "by %@"), recipe.author.name))
                         .font(.custom("Georgia", size: 12))
                         .foregroundColor(.secondary)
                     
@@ -131,7 +131,7 @@ struct RecentRecipeCard: View {
     
     var body: some View {
         Button(action: {
-            // TODO: 레시피 상세 화면으로 이동
+                // TODO: Navigate to recipe details
         }) {
             HStack(spacing: 12) {
                 // 레시피 이미지
@@ -168,7 +168,7 @@ struct RecentRecipeCard: View {
                         .lineLimit(1)
                     
                     HStack {
-                        Text("by \(recipe.author.name)")
+                        Text(String(format: L10n.text("common.recipe.by_author", default: "by %@"), recipe.author.name))
                             .font(.custom("Georgia", size: 11))
                             .foregroundColor(.secondary)
                         

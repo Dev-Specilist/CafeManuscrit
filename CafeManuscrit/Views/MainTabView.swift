@@ -1,82 +1,96 @@
-//
-//  MainTabView.swift
-//  CafeManuscrit
-//
-//  Created by 고재민 on 6/3/25.
-//
-
 import SwiftUI
 
 struct MainTabView: View {
-    @EnvironmentObject var appViewModel: AppViewModel
-    @State private var searchText = ""
     @State private var selectedTab = 0
-    
+
     var body: some View {
-        VStack(spacing: 0) {
-            // 상단 네비게이션 바
-            TopNavigationBar(
-                searchText: $searchText,
-                onSearchTap: {
-                    selectedTab = 1
-                },
-                onProfileTap: {
-                    if appViewModel.isLoggedIn {
-                        selectedTab = 4
-                    } else {
-                        appViewModel.requireLogin()
-                    }
-                }
-            )
-            .environmentObject(appViewModel)
-            
-            // 하단 컨텐츠 영역
-            TabView(selection: $selectedTab) {
-                HomeView()
-                    .tag(0)
-                    .tabItem {
-                        Image(systemName: selectedTab == 0 ? "house.fill" : "house")
-                        Text("홈")
-                    }
-                
-//                SearchView(searchText: $searchText)
-//                    .tag(1)
-//                    .tabItem {
-//                        Image(systemName: selectedTab == 1 ? "magnifyingglass.circle.fill" : "magnifyingglass")
-//                        Text("검색")
-//                    }
-//                
-//                WriteView()
-//                    .tag(2)
-//                    .tabItem {
-//                        Image(systemName: selectedTab == 2 ? "square.and.pencil" : "square.and.pencil")
-//                        Text("레시피 작성")
-//                    }
-//                
-//                BookmarkView()
-//                    .tag(3)
-//                    .tabItem {
-//                        Image(systemName: selectedTab == 3 ? "bookmark.fill" : "bookmark")
-//                        Text("북마크")
-//                    }
-//                
-//                ProfileView()
-//                    .tag(4)
-//                    .tabItem {
-//                        Image(systemName: selectedTab == 4 ? "person.fill" : "person")
-//                        Text("프로필")
-//                    }
-            }
-            .accentColor(.brown)
+        TabView(selection: $selectedTab) {
+            HomeView()
+                .tag(0)
+
+            DiscoverFeedView()
+                .tag(1)
+
+            BrewLabView()
+                .tag(2)
+
+            ProfileView()
+                .tag(3)
         }
-        .background(Color(.systemBackground))
+        .toolbar(.hidden, for: .tabBar)
+        .background(Color(hex: "FFFFFF"))
+        .safeAreaInset(edge: .bottom) {
+            CustomMenuBar(selectedTab: $selectedTab)
+                .padding(.horizontal, 14)
+                .padding(.top, 8)
+                .padding(.bottom, 12)
+                .frame(maxWidth: .infinity)
+                .background(
+                    Color(hex: "FFFFFF")
+                        .ignoresSafeArea(edges: .bottom)
+                )
+        }
     }
 }
 
+private struct CustomMenuBar: View {
+    @Binding var selectedTab: Int
 
-// MARK: - Preview
-//struct MainTabView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MainTabView()
-//    }
-//}
+    private struct TabItem {
+        let icon: PenIconKind
+        let selectedIcon: PenIconKind
+        let title: String
+    }
+
+    private let items: [TabItem] = [
+        TabItem(icon: .home, selectedIcon: .home, title: L10n.text("tab.home.title", default: "Home")),
+        TabItem(icon: .search, selectedIcon: .search, title: L10n.text("tab.discover.title", default: "Discover")),
+        TabItem(icon: .coffeeMaker, selectedIcon: .coffeeMaker, title: L10n.text("tab.feed.title", default: "Brew")),
+        TabItem(icon: .person, selectedIcon: .person, title: L10n.text("tab.profile.title", default: "Profile"))
+    ]
+
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(Array(items.enumerated()), id: \.offset) { index, item in
+                Button {
+                    selectedTab = index
+                } label: {
+                    VStack(spacing: 2) {
+                        PenIcon(
+                            kind: selectedTab == index ? item.selectedIcon : item.icon,
+                            size: 18,
+                            color: selectedTab == index ? Color(hex: "2F6DF6") : Color(hex: "8E8E93")
+                        )
+                        .offset(y: item.icon == .coffeeMaker ? -1 : 0)
+
+                        Text(item.title)
+                            .font(.custom("Inter", size: 10))
+                            .fontWeight(selectedTab == index ? .bold : .semibold)
+                            .foregroundColor(selectedTab == index ? Color(hex: "2F6DF6") : Color(hex: "8E8E93"))
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 42)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .frame(height: 68)
+        .background(Color(hex: "2A211D"))
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color(hex: "3A2E28"), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+}
+
+struct MainTabView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainTabView()
+            .environmentObject(AppViewModel())
+            .environmentObject(RecipeRepository())
+    }
+}

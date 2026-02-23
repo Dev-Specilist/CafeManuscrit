@@ -1,0 +1,77 @@
+/* UI-only localized strings.
+   Content/user data is managed in Support/ContentText.swift. */
+
+"home.section.featured.title" = "Featured Recipes";
+"home.section.latest.title" = "Latest Recipes";
+"home.section.recommended.title" = "Today's Recommended Recipe";
+"home.section.recommended.subtitle" = "Based on your beans and flavor profile, pick a recipe you can brew right now.";
+"home.section.recommended.action.view_picks" = "View picks";
+"common.recipe.by_author" = "by %@";
+
+"tab.home.title" = "Home";
+"tab.discover.title" = "Discover";
+"tab.discover.subtitle" = "Search recipes, beans, and brewing methods.";
+"tab.feed.title" = "Brew";
+"tab.feed.subtitle" = "Browse updates and community recipe activity.";
+"tab.profile.title" = "Profile";
+"tab.profile.subtitle" = "Manage your account and saved coffee preferences.";
+
+"discover.feed.title" = "Discover Feed";
+"discover.feed.subtitle" = "Explore recipes from creators around the world.";
+"discover.feed.search.placeholder" = "Search beans, recipes, cafes";
+"discover.feed.filter.for_you" = "For You";
+"discover.feed.filter.following" = "Following";
+"discover.feed.filter.trending" = "Trending";
+
+"common.search.placeholder" = "Search recipes...";
+
+"login.brand.title" = "Cafe Manuscrit";
+"login.brand.subtitle" = "Coffee stories written by hand";
+"login.auth.title" = "Sign in to share your recipes";
+"login.auth.subtitle" = "Share your own pour-over recipes with the world.";
+"login.auth.or" = "or";
+"login.auth.continue_without" = "Continue without login";
+"login.legal.privacy.prefix" = "By signing in, you agree to";
+"login.legal.privacy.policy" = "Privacy Policy";
+"login.legal.privacy.suffix" = ".";
+"login.action.apple_sign_in" = "Sign in with Apple";
+"login.action.google_sign_in" = "Sign in with Google";
+
+"domain.brew_method.v60" = "V60";
+"domain.brew_method.chemex" = "Chemex";
+"domain.brew_method.aeropress" = "AeroPress";
+"domain.brew_method.french_press" = "French Press";
+"domain.brew_method.pour_over" = "Pour Over";
+"domain.brew_method.kalita" = "Kalita Wave";
+
+"domain.roast_level.light" = "Light Roast";
+"domain.roast_level.medium_light" = "Medium Light";
+"domain.roast_level.medium" = "Medium";
+"domain.roast_level.medium_dark" = "Medium Dark";
+"domain.roast_level.dark" = "Dark Roast";
+
+"brew.lab.title" = "Brew Lab";
+"brew.lab.subtitle" = "Dial in your recipe and track each extraction.";
+"brew.quick.stat.yield" = "Yield 2.1";
+"brew.quick.stat.temp" = "Temp 93°C";
+"brew.quick.cta.start" = "Start Brew";
+"brew.logs.title" = "Recent Brew Logs";
+"brew.selected.stat.ratio" = "Ratio 1:16.7";
+"brew.selected.stat.temp" = "Temp 92°C";
+"brew.delete" = "Delete";
+"brew.timer.title" = "Brew Timer";
+"brew.timer.subtitle" = "Brew in progress · Keep extraction smooth";
+"brew.timer.step.big" = "CURRENT STEP 2 · BLOOM";
+"brew.timer.animation.title" = "BLOOM Animation Area";
+"brew.timer.animation.subtitle" = "Now: BLOOM (degas)  ·  Next: POUR";
+"brew.timer.pause" = "Pause";
+"brew.timer.prev" = "Prev Step";
+"brew.timer.next" = "Next Step";
+"brew.timer.stop" = "Stop Brew";
+"brew.timer.step.1" = "1 READY";
+"brew.timer.step.2" = "2 BLOOM";
+"brew.timer.step.3" = "3 POUR";
+"brew.timer.step.4" = "4 FINISH";
+"brew.timer.step.5" = "5 DONE";
+"brew.timer.minus10" = "-10s";
+"brew.timer.plus10" = "+10s";

@@ -15,18 +15,18 @@ struct CoffeeBean: Codable {
     let description: String?
     
     static let dummyBean1 = CoffeeBean(
-        name: "콜롬비아 수프리모",
-        origin: "콜롬비아",
+        name: "Colombia Supremo",
+        origin: "Colombia",
         roastLevel: .medium,
-        processingMethod: "워시드",
-        description: "부드럽고 균형잡힌 맛"
+        processingMethod: "Washed",
+        description: "Smooth and balanced cup"
     )
     
     static let dummyBean2 = CoffeeBean(
-        name: "에티오피아 예가체프",
-        origin: "에티오피아",
+        name: "Ethiopia Yirgacheffe",
+        origin: "Ethiopia",
         roastLevel: .light,
-        processingMethod: "내추럴",
-        description: "과일향과 꽃향이 풍부"
+        processingMethod: "Natural",
+        description: "Floral and fruity aroma"
     )
 }

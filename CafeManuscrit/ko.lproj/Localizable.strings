@@ -1,0 +1,77 @@
+/* UI-only localized strings.
+   Content/user data is managed in Support/ContentText.swift. */
+
+"home.section.featured.title" = "추천 레시피";
+"home.section.latest.title" = "최신 레시피";
+"home.section.recommended.title" = "오늘의 추천 레시피";
+"home.section.recommended.subtitle" = "보유한 원두와 플레이버 프로파일을 바탕으로 지금 바로 추출할 수 있는 레시피를 골라보세요.";
+"home.section.recommended.action.view_picks" = "추천 보기";
+"common.recipe.by_author" = "%@";
+
+"tab.home.title" = "홈";
+"tab.discover.title" = "탐색";
+"tab.discover.subtitle" = "레시피, 원두, 추출 방식을 검색하세요.";
+"tab.feed.title" = "브루";
+"tab.feed.subtitle" = "업데이트와 커뮤니티 레시피 활동을 둘러보세요.";
+"tab.profile.title" = "프로필";
+"tab.profile.subtitle" = "계정과 저장된 커피 설정을 관리하세요.";
+
+"discover.feed.title" = "디스커버 피드";
+"discover.feed.subtitle" = "전 세계 크리에이터의 레시피를 둘러보세요.";
+"discover.feed.search.placeholder" = "원두, 레시피, 카페 검색";
+"discover.feed.filter.for_you" = "추천";
+"discover.feed.filter.following" = "팔로잉";
+"discover.feed.filter.trending" = "트렌딩";
+
+"common.search.placeholder" = "레시피 검색...";
+
+"login.brand.title" = "Cafe Manuscrit";
+"login.brand.subtitle" = "손글씨로 전하는 커피 이야기";
+"login.auth.title" = "레시피 공유를 위해 로그인해 주세요";
+"login.auth.subtitle" = "나만의 드립 레시피를 전 세계와 공유해 보세요.";
+"login.auth.or" = "또는";
+"login.auth.continue_without" = "로그인 없이 둘러보기";
+"login.legal.privacy.prefix" = "로그인 시";
+"login.legal.privacy.policy" = "개인정보 처리방침";
+"login.legal.privacy.suffix" = "에 동의하게 됩니다.";
+"login.action.apple_sign_in" = "Apple로 로그인";
+"login.action.google_sign_in" = "Google로 로그인";
+
+"domain.brew_method.v60" = "V60";
+"domain.brew_method.chemex" = "케멕스";
+"domain.brew_method.aeropress" = "에어로프레스";
+"domain.brew_method.french_press" = "프렌치프레스";
+"domain.brew_method.pour_over" = "푸어오버";
+"domain.brew_method.kalita" = "칼리타 웨이브";
+
+"domain.roast_level.light" = "라이트 로스트";
+"domain.roast_level.medium_light" = "미디엄 라이트";
+"domain.roast_level.medium" = "미디엄";
+"domain.roast_level.medium_dark" = "미디엄 다크";
+"domain.roast_level.dark" = "다크 로스트";
+
+"brew.lab.title" = "브루 랩";
+"brew.lab.subtitle" = "레시피를 미세 조정하고 각 추출 기록을 추적하세요.";
+"brew.quick.stat.yield" = "수율 2.1";
+"brew.quick.stat.temp" = "온도 93°C";
+"brew.quick.cta.start" = "브루 시작";
+"brew.logs.title" = "최근 브루 로그";
+"brew.selected.stat.ratio" = "비율 1:16.7";
+"brew.selected.stat.temp" = "온도 92°C";
+"brew.delete" = "삭제";
+"brew.timer.title" = "브루 타이머";
+"brew.timer.subtitle" = "브루 진행 중 · 추출 흐름을 유지하세요";
+"brew.timer.step.big" = "현재 단계 2 · BLOOM";
+"brew.timer.animation.title" = "BLOOM 애니메이션 영역";
+"brew.timer.animation.subtitle" = "현재: BLOOM (디개싱)  ·  다음: POUR";
+"brew.timer.pause" = "일시정지";
+"brew.timer.prev" = "이전 단계";
+"brew.timer.next" = "다음 단계";
+"brew.timer.stop" = "브루 종료";
+"brew.timer.step.1" = "1 준비";
+"brew.timer.step.2" = "2 블룸";
+"brew.timer.step.3" = "3 푸어";
+"brew.timer.step.4" = "4 피니시";
+"brew.timer.step.5" = "5 완료";
+"brew.timer.minus10" = "-10초";
+"brew.timer.plus10" = "+10초";

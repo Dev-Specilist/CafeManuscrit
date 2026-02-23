@@ -29,12 +29,12 @@ struct LoginView: View {
                         )
                     
                     VStack(spacing: 4) {
-                        Text("Cafe Manuscrit")
+                        Text(L10n.text("login.brand.title", default: "Cafe Manuscrit"))
                             .font(.custom("Georgia", size: 32))
                             .fontWeight(.medium)
                             .foregroundColor(.primary)
                         
-                        Text("손글씨로 전하는 커피 이야기")
+                        Text(L10n.text("login.brand.subtitle", default: "Coffee stories written by hand"))
                             .font(.custom("Georgia", size: 16))
                             .foregroundColor(.secondary)
                     }
@@ -47,13 +47,13 @@ struct LoginView: View {
             VStack(spacing: 16) {
                 // 안내 문구
                 VStack(spacing: 8) {
-                    Text("레시피를 공유하려면 로그인이 필요해요")
+                    Text(L10n.text("login.auth.title", default: "Sign in to share your recipes"))
                         .font(.custom("Georgia", size: 18))
                         .fontWeight(.medium)
                         .foregroundColor(.primary)
                         .multilineTextAlignment(.center)
                     
-                    Text("나만의 드립 커피 레시피를 세상과 나누어보세요")
+                    Text(L10n.text("login.auth.subtitle", default: "Share your own pour-over recipes with the world."))
                         .font(.custom("Georgia", size: 14))
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -76,7 +76,7 @@ struct LoginView: View {
                         .frame(height: 1)
                         .foregroundColor(Color(.systemGray4))
                     
-                    Text("또는")
+                    Text(L10n.text("login.auth.or", default: "or"))
                         .font(.custom("Georgia", size: 14))
                         .foregroundColor(.secondary)
                         .padding(.horizontal, 16)
@@ -91,7 +91,7 @@ struct LoginView: View {
                 Button(action: {
                     appViewModel.appState = .main
                 }) {
-                    Text("로그인 없이 둘러보기")
+                    Text(L10n.text("login.auth.continue_without", default: "Continue without login"))
                         .font(.custom("Georgia", size: 16))
                         .foregroundColor(.brown)
                         .padding(.vertical, 12)
@@ -99,17 +99,17 @@ struct LoginView: View {
                 
                 // 개인정보 처리방침
                 HStack(spacing: 4) {
-                    Text("로그인 시")
+                    Text(L10n.text("login.legal.privacy.prefix", default: "By signing in, you agree to"))
                         .font(.custom("Georgia", size: 12))
                         .foregroundColor(.secondary)
                     
-                    Button("개인정보 처리방침") {
-                        // TODO: 개인정보 처리방침 화면으로 이동
+                    Button(L10n.text("login.legal.privacy.policy", default: "Privacy Policy")) {
+                        // TODO: Navigate to privacy policy
                     }
                     .font(.custom("Georgia", size: 12))
                     .foregroundColor(.brown)
                     
-                    Text("에 동의하게 됩니다.")
+                    Text(L10n.text("login.legal.privacy.suffix", default: "."))
                         .font(.custom("Georgia", size: 12))
                         .foregroundColor(.secondary)
                 }
@@ -126,12 +126,12 @@ struct LoginView: View {
     private func signInWithApple() {
         isLoading = true
         
-        // TODO: 실제 Apple Sign In 구현
-        // 현재는 더미 로그인
+        // TODO: Implement Apple Sign In
+        // Temporary mock login
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             let dummyUser = User(
                 id: "apple_\(UUID().uuidString)",
-                name: "Apple 사용자",
+                name: ContentText.User.appleMockName,
                 email: "apple@example.com",
                 profileImageUrl: nil,
                 createdAt: Date()
@@ -145,12 +145,12 @@ struct LoginView: View {
     private func signInWithGoogle() {
         isLoading = true
         
-        // TODO: 실제 Google Sign In 구현
-        // 현재는 더미 로그인
+        // TODO: Implement Google Sign In
+        // Temporary mock login
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             let dummyUser = User(
                 id: "google_\(UUID().uuidString)",
-                name: "Google 사용자",
+                name: ContentText.User.googleMockName,
                 email: "google@example.com",
                 profileImageUrl: nil,
                 createdAt: Date()
@@ -159,73 +159,6 @@ struct LoginView: View {
             appViewModel.login(user: dummyUser, token: "google_dummy_token")
             isLoading = false
         }
-    }
-}
-
-// MARK: - Apple Sign In Button
-struct AppleSignInButton: View {
-    @Binding var isLoading: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack {
-                if isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                        .scaleEffect(0.8)
-                } else {
-                    Image(systemName: "applelogo")
-                        .font(.system(size: 18, weight: .medium))
-                }
-                
-                Text("Apple로 로그인")
-                    .font(.custom("Georgia", size: 16))
-                    .fontWeight(.medium)
-            }
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
-            .frame(height: 50)
-            .background(Color.black)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-        }
-        .disabled(isLoading)
-    }
-}
-
-// MARK: - Google Sign In Button
-struct GoogleSignInButton: View {
-    @Binding var isLoading: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack {
-                if isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .primary))
-                        .scaleEffect(0.8)
-                } else {
-                    // Google 로고 대신 간단한 아이콘 사용
-                    Image(systemName: "globe")
-                        .font(.system(size: 18, weight: .medium))
-                        .foregroundColor(.primary)
-                }
-                
-                Text("Google로 로그인")
-                    .font(.custom("Georgia", size: 16))
-                    .fontWeight(.medium)
-                    .foregroundColor(.primary)
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 50)
-            .background(Color(.systemBackground))
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color(.systemGray4), lineWidth: 1)
-            )
-        }
-        .disabled(isLoading)
     }
 }
 

@@ -14,9 +14,9 @@ struct Recipe: Identifiable, Codable {
     let author: User
     let coffeeBean: CoffeeBean
     let brewMethod: BrewMethod
-    let waterTemperature: Int // 섭씨
-    let coffeeToWaterRatio: String // "1:15" 형태
-    let brewTime: TimeInterval // 초
+    let waterTemperature: Int // Celsius
+    let coffeeToWaterRatio: String // e.g. "1:15"
+    let brewTime: TimeInterval // seconds
     let steps: [BrewStep]
     let imageUrl: String?
     let tags: [String]
@@ -24,12 +24,12 @@ struct Recipe: Identifiable, Codable {
     let bookmarkCount: Int
     let createdAt: Date
     
-    // 더미 데이터
+    // Dummy data
     static let dummyFeaturedRecipes: [Recipe] = [
         Recipe(
             id: "recipe_001",
-            title: "황금비율 V60 레시피",
-            description: "완벽한 밸런스의 V60 드립 레시피입니다.",
+            title: "Golden Ratio V60",
+            description: "A balanced V60 recipe with a clean finish.",
             author: User.dummyUser,
             coffeeBean: CoffeeBean.dummyBean1,
             brewMethod: .v60,
@@ -38,15 +38,15 @@ struct Recipe: Identifiable, Codable {
             brewTime: 240,
             steps: BrewStep.dummySteps,
             imageUrl: nil,
-            tags: ["V60", "밸런스", "초보자"],
+            tags: ["V60", "Balanced", "Beginner"],
             rating: 4.8,
             bookmarkCount: 124,
             createdAt: Date()
         ),
         Recipe(
             id: "recipe_002",
-            title: "에티오피아 예가체프 특제",
-            description: "과일향이 풍부한 에티오피아 원두로 만드는 특별한 레시피",
+            title: "Ethiopian Yirgacheffe Special",
+            description: "A bright and fruity cup using Ethiopian beans.",
             author: User.dummyUser,
             coffeeBean: CoffeeBean.dummyBean2,
             brewMethod: .chemex,
@@ -55,7 +55,7 @@ struct Recipe: Identifiable, Codable {
             brewTime: 300,
             steps: BrewStep.dummySteps,
             imageUrl: nil,
-            tags: ["에티오피아", "과일향", "케멕스"],
+            tags: ["Ethiopia", "Fruity", "Chemex"],
             rating: 4.6,
             bookmarkCount: 89,
             createdAt: Date()
@@ -65,8 +65,8 @@ struct Recipe: Identifiable, Codable {
     static let dummyRecentRecipes: [Recipe] = [
         Recipe(
             id: "recipe_003",
-            title: "아침을 위한 간단 드립",
-            description: "바쁜 아침에도 쉽게 만들 수 있는 레시피",
+            title: "Easy Morning Drip",
+            description: "A quick recipe for busy mornings.",
             author: User.dummyUser,
             coffeeBean: CoffeeBean.dummyBean1,
             brewMethod: .pourOver,
@@ -75,15 +75,15 @@ struct Recipe: Identifiable, Codable {
             brewTime: 180,
             steps: BrewStep.dummySteps,
             imageUrl: nil,
-            tags: ["간단", "아침", "빠른"],
+            tags: ["Easy", "Morning", "Quick"],
             rating: 4.3,
             bookmarkCount: 45,
             createdAt: Date()
         ),
         Recipe(
             id: "recipe_004",
-            title: "진한 커피 애호가를 위한 레시피",
-            description: "강한 바디감과 깊은 맛을 원하는 분들께",
+            title: "Rich Cup for Bold Coffee Lovers",
+            description: "For those who want a full body and deep taste.",
             author: User.dummyUser,
             coffeeBean: CoffeeBean.dummyBean2,
             brewMethod: .frenchPress,
@@ -92,7 +92,7 @@ struct Recipe: Identifiable, Codable {
             brewTime: 240,
             steps: BrewStep.dummySteps,
             imageUrl: nil,
-            tags: ["진한맛", "바디감", "프렌치프레스"],
+            tags: ["Bold", "Body", "French Press"],
             rating: 4.7,
             bookmarkCount: 78,
             createdAt: Date()

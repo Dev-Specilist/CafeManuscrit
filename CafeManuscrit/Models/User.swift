@@ -16,7 +16,7 @@ struct User: Identifiable, Codable {
     
     static let dummyUser = User(
         id: "user_001",
-        name: "커피 마니아",
+        name: "Coffee Lover",
         email: "coffee@example.com",
         profileImageUrl: nil,
         createdAt: Date()

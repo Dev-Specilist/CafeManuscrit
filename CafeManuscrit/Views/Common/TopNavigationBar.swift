@@ -84,7 +84,7 @@ struct SearchSection: View {
                     .foregroundColor(.secondary)
                     .font(.system(size: 16))
                 
-                Text(searchText.isEmpty ? "레시피를 찾아보세요..." : searchText)
+                Text(searchText.isEmpty ? L10n.text("common.search.placeholder", default: "Search recipes...") : searchText)
                     .font(.custom("Georgia", size: 14))
                     .foregroundColor(searchText.isEmpty ? .secondary : .primary)
                     .frame(maxWidth: .infinity, alignment: .leading)
