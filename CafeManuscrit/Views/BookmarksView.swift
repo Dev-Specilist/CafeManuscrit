@@ -10,12 +10,12 @@ struct BookmarksView: View {
                     if recipes.isEmpty {
                         VStack(spacing: 8) {
                             Text(L10n.text("bookmark.empty.title", default: "저장한 레시피가 없습니다"))
-                                .font(.custom("Inter", size: 16))
+                                .font(.app(size: 16))
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color(hex: "2F2721"))
 
                             Text(L10n.text("bookmark.empty.subtitle", default: "마음에 드는 레시피를 저장해 보세요"))
-                                .font(.custom("Inter", size: 12))
+                                .font(.app(size: 12))
                                 .foregroundColor(Color(hex: "6A625B"))
                         }
                         .padding(.vertical, 28)

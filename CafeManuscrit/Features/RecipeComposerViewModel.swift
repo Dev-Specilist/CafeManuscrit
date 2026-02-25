@@ -43,11 +43,11 @@ final class RecipeComposerViewModel: ObservableObject {
         defer { isSubmitting = false }
 
         guard let created = repository.createRecipe(from: draft, authorName: authorName, userId: userId) else {
-            message = L10n.text("compose.publish.failed", default: "게시에 실패했습니다.")
+            message = L10n.text("compose.publish.failed", default: "Failed to publish.")
             return nil
         }
 
-        message = L10n.text("compose.publish.success", default: "레시피가 게시되었습니다.")
+        message = L10n.text("compose.publish.success", default: "Recipe published.")
         draft = RecipeDraft()
         return created
     }

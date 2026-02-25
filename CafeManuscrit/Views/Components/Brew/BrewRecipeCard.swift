@@ -11,12 +11,12 @@ struct BrewRecipeCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title)
-                .font(.custom("Inter", size: 16))
+                .font(.app(size: 16))
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "2F2721"))
 
             Text(meta)
-                .font(.custom("Inter", size: 12))
+                .font(.app(size: 12))
                 .foregroundColor(Color(hex: "6A625B"))
 
             HStack(spacing: 8) {
@@ -28,7 +28,7 @@ struct BrewRecipeCard: View {
 
             if let status = statusText {
                 Text(status)
-                    .font(.custom("Inter", size: 12))
+                    .font(.app(size: 12))
                     .fontWeight(.semibold)
                     .foregroundColor(Color(hex: "7C4A2D"))
             }
@@ -40,7 +40,7 @@ struct BrewRecipeCard: View {
                     .frame(height: 36)
                     .overlay(
                         Text(ctaLabel)
-                            .font(.custom("Inter", size: 12))
+                            .font(.app(size: 12))
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                     )

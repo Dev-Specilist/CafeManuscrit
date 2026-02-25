@@ -1,9 +1,12 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject private var appViewModel: AppViewModel
     @EnvironmentObject private var repository: RecipeRepository
     @State private var selectedRecipeID: String?
     @State private var sort: FeedSortOption = .latest
+    @State private var isBookmarkLoadingRecipeIDs: Set<String> = []
+    @State private var toastMessage: String?
 
     private var sortedRecipes: [RecipeItem] {
         let recipes = repository.recipes
@@ -40,6 +43,20 @@ struct HomeView: View {
             .padding(.bottom, 8)
         }
         .background(Color(hex: "FFFFFF"))
+        .overlay(alignment: .top) {
+            if let toastMessage {
+                Text(toastMessage)
+                    .font(.app(size: 12))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(Color.black.opacity(0.8))
+                    .clipShape(Capsule())
+                    .padding(.top, 12)
+                    .transition(.opacity)
+            }
+        }
         .sheet(
             isPresented: Binding(
                 get: { selectedRecipeID != nil },
@@ -64,12 +81,12 @@ struct HomeView: View {
     private var hero: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(L10n.text("home.section.recommended.title", default: "Today's Recommended Recipe"))
-                .font(.custom("Inter", size: 15))
+                .font(.app(size: 15))
                 .fontWeight(.semibold)
                 .foregroundColor(Color(hex: "2B241E"))
 
             Text(L10n.text("home.section.recommended.subtitle", default: "Based on your beans and flavor profile, pick a recipe you can brew right now."))
-                .font(.custom("Inter", size: 11))
+                .font(.app(size: 11))
                 .foregroundColor(Color(hex: "5E5852"))
                 .lineSpacing(3.3)
                 .fixedSize(horizontal: false, vertical: true)
@@ -82,7 +99,7 @@ struct HomeView: View {
                         PenIcon(kind: .star, size: 14, color: Color(hex: "FFD66B"))
                         Text(L10n.text("home.section.recommended.action.view_picks", default: "View picks"))
                             .foregroundColor(.white)
-                            .font(.custom("Inter", size: 11))
+                            .font(.app(size: 11))
                             .fontWeight(.semibold)
                     }
                     .padding(.horizontal, 10)
@@ -96,7 +113,7 @@ struct HomeView: View {
                 } label: {
                     Text(sort == .latest ? L10n.text("feed.sort.latest", default: "최신순") : L10n.text("feed.sort.popular", default: "인기순"))
                         .foregroundColor(Color(hex: "5A341F"))
-                        .font(.custom("Inter", size: 11))
+                        .font(.app(size: 11))
                         .fontWeight(.semibold)
                         .padding(.horizontal, 10)
                         .frame(height: 30)
@@ -123,7 +140,7 @@ struct HomeView: View {
             HStack(spacing: 8) {
                 PenIcon(kind: .star, size: 20, color: Color(hex: "F4A261"))
                 Text(L10n.text("home.section.featured.title", default: "Featured Recipes"))
-                    .font(.custom("Inter", size: 17))
+                    .font(.app(size: 17))
                     .fontWeight(.semibold)
                     .foregroundColor(Color(hex: "1F1A16"))
             }
@@ -153,7 +170,7 @@ struct HomeView: View {
             HStack(spacing: 8) {
                 PenIcon(kind: .history, size: 20, color: Color(hex: "5B8DEF"))
                 Text(L10n.text("home.section.latest.title", default: "Latest Recipes"))
-                    .font(.custom("Inter", size: 17))
+                    .font(.app(size: 17))
                     .fontWeight(.semibold)
                     .foregroundColor(Color(hex: "1F1A16"))
             }
@@ -164,12 +181,47 @@ struct HomeView: View {
                     HomeLatestRecipeRow(
                         title: recipe.title,
                         subtitle: "\(recipe.beanName) · \(recipe.roastLevel.displayName)",
-                        imageURL: recipe.imageURL ?? ""
+                        imageURL: recipe.imageURL ?? "",
+                        isBookmarked: recipe.isBookmarked,
+                        onTap: {
+                            selectedRecipeID = recipe.id
+                        },
+                        onBookmarkTap: {
+                            toggleBookmark(recipeID: recipe.id)
+                        }
                     )
-                    .onTapGesture {
-                        selectedRecipeID = recipe.id
-                    }
                 }
+            }
+        }
+    }
+
+    private func toggleBookmark(recipeID: String) {
+        guard appViewModel.isLoggedIn else {
+            appViewModel.requireLogin()
+            return
+        }
+
+        guard !isBookmarkLoadingRecipeIDs.contains(recipeID) else {
+            return
+        }
+
+        isBookmarkLoadingRecipeIDs.insert(recipeID)
+        Task {
+            do {
+                _ = try await repository.toggleBookmark(recipeID: recipeID)
+            } catch {
+                showToast(error.localizedDescription)
+            }
+            isBookmarkLoadingRecipeIDs.remove(recipeID)
+        }
+    }
+
+    private func showToast(_ message: String) {
+        toastMessage = message
+        Task {
+            try? await Task.sleep(for: .seconds(2))
+            if !Task.isCancelled {
+                toastMessage = nil
             }
         }
     }
@@ -178,6 +230,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(AppViewModel())
             .environmentObject(RecipeRepository())
     }
 }

@@ -21,12 +21,8 @@ struct MainTabView: View {
         .background(Color(hex: "FFFFFF"))
         .safeAreaInset(edge: .bottom) {
             CustomMenuBar(selectedTab: $selectedTab)
-                .padding(.horizontal, 14)
-                .padding(.top, 8)
-                .padding(.bottom, 12)
-                .frame(maxWidth: .infinity)
                 .background(
-                    Color(hex: "FFFFFF")
+                    Color(hex: "2A211D")
                         .ignoresSafeArea(edges: .bottom)
                 )
         }
@@ -50,40 +46,43 @@ private struct CustomMenuBar: View {
     ]
 
     var body: some View {
-        HStack(spacing: 0) {
-            ForEach(Array(items.enumerated()), id: \.offset) { index, item in
-                Button {
-                    selectedTab = index
-                } label: {
-                    VStack(spacing: 2) {
-                        PenIcon(
-                            kind: selectedTab == index ? item.selectedIcon : item.icon,
-                            size: 18,
-                            color: selectedTab == index ? Color(hex: "2F6DF6") : Color(hex: "8E8E93")
-                        )
-                        .offset(y: item.icon == .coffeeMaker ? -1 : 0)
+        VStack(spacing: 0) {
+            Rectangle()
+                .fill(Color(hex: "3A2E28"))
+                .frame(height: 1)
 
-                        Text(item.title)
-                            .font(.custom("Inter", size: 10))
-                            .fontWeight(selectedTab == index ? .bold : .semibold)
-                            .foregroundColor(selectedTab == index ? Color(hex: "2F6DF6") : Color(hex: "8E8E93"))
+            HStack(spacing: 0) {
+                ForEach(Array(items.enumerated()), id: \.offset) { index, item in
+                    Button {
+                        selectedTab = index
+                    } label: {
+                        VStack(spacing: 2) {
+                            PenIcon(
+                                kind: selectedTab == index ? item.selectedIcon : item.icon,
+                                size: 18,
+                                color: selectedTab == index ? Color(hex: "2F6DF6") : Color(hex: "8E8E93")
+                            )
+                            .offset(y: item.icon == .coffeeMaker ? -1 : 0)
+
+                            Text(item.title)
+                                .font(.app(size: 10))
+                                .fontWeight(selectedTab == index ? .bold : .semibold)
+                                .foregroundColor(selectedTab == index ? Color(hex: "2F6DF6") : Color(hex: "8E8E93"))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 42)
+                        .contentShape(Rectangle())
                     }
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 42)
-                    .contentShape(Rectangle())
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
+            .padding(.horizontal, 12)
+            .padding(.top, 8)
+            .padding(.bottom, 12)
+            .frame(height: 68)
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 8)
-        .frame(height: 68)
+        .frame(maxWidth: .infinity)
         .background(Color(hex: "2A211D"))
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(Color(hex: "3A2E28"), lineWidth: 1)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
 

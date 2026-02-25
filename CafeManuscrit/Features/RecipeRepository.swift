@@ -214,10 +214,10 @@ private extension RecipeRepository {
                 waterAmountMl: 240,
                 totalBrewTimeSec: 170,
                 steps: [
-                    step(1, "뜸들이기", 30, 40),
-                    step(2, "1차 푸어", 45, 110),
-                    step(3, "2차 푸어", 55, 90),
-                    step(4, "드로우다운", 40, nil)
+                    step(1, "Bloom", 30, 40),
+                    step(2, "First Pour", 45, 110),
+                    step(3, "Second Pour", 55, 90),
+                    step(4, "Drawdown", 40, nil)
                 ],
                 tags: ["초보추천", "밸런스"],
                 imageURL: "https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&w=1200&q=80",
@@ -245,10 +245,10 @@ private extension RecipeRepository {
                 waterAmountMl: 290,
                 totalBrewTimeSec: 205,
                 steps: [
-                    step(1, "뜸들이기", 35, 50),
-                    step(2, "중심 푸어", 75, 140),
-                    step(3, "바깥 푸어", 60, 100),
-                    step(4, "드로우다운", 35, nil)
+                    step(1, "Bloom", 35, 50),
+                    step(2, "Center Pour", 75, 140),
+                    step(3, "Outer Pour", 60, 100),
+                    step(4, "Drawdown", 35, nil)
                 ],
                 tags: ["코코아", "중배전"],
                 imageURL: "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=1200&q=80",
@@ -276,10 +276,10 @@ private extension RecipeRepository {
                 waterAmountMl: 320,
                 totalBrewTimeSec: 250,
                 steps: [
-                    step(1, "필터 린스", 30, nil),
-                    step(2, "뜸들이기", 40, 60),
-                    step(3, "메인 푸어", 120, 200),
-                    step(4, "마무리", 60, 60)
+                    step(1, "Filter Rinse", 30, nil),
+                    step(2, "Bloom", 40, 60),
+                    step(3, "Main Pour", 120, 200),
+                    step(4, "Finish", 60, 60)
                 ],
                 tags: ["플로럴", "주말"],
                 imageURL: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
@@ -307,9 +307,9 @@ private extension RecipeRepository {
                 waterAmountMl: 230,
                 totalBrewTimeSec: 120,
                 steps: [
-                    step(1, "투입", 20, nil),
-                    step(2, "교반", 30, 120),
-                    step(3, "프레스", 70, 110)
+                    step(1, "Dose", 20, nil),
+                    step(2, "Stir", 30, 120),
+                    step(3, "Press", 70, 110)
                 ],
                 tags: ["산미", "짧은추출"],
                 imageURL: "https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1200&q=80",
@@ -337,10 +337,10 @@ private extension RecipeRepository {
                 waterAmountMl: 330,
                 totalBrewTimeSec: 300,
                 steps: [
-                    step(1, "투입", 20, nil),
-                    step(2, "푸어", 60, 330),
-                    step(3, "브레이크", 40, nil),
-                    step(4, "프레스", 180, nil)
+                    step(1, "Dose", 20, nil),
+                    step(2, "Pour", 60, 330),
+                    step(3, "Break", 40, nil),
+                    step(4, "Press", 180, nil)
                 ],
                 tags: ["묵직함", "다크"],
                 imageURL: "https://images.unsplash.com/photo-1461988320302-91bde64fc8e4?auto=format&fit=crop&w=1200&q=80",
@@ -368,9 +368,9 @@ private extension RecipeRepository {
                 waterAmountMl: 250,
                 totalBrewTimeSec: 190,
                 steps: [
-                    step(1, "뜸들이기", 30, 45),
-                    step(2, "중앙 푸어", 70, 130),
-                    step(3, "마무리", 90, 75)
+                    step(1, "Bloom", 30, 45),
+                    step(2, "Center Pour", 70, 130),
+                    step(3, "Finish", 90, 75)
                 ],
                 tags: ["데일리", "안정적"],
                 imageURL: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
@@ -398,9 +398,9 @@ private extension RecipeRepository {
                 waterAmountMl: 235,
                 totalBrewTimeSec: 175,
                 steps: [
-                    step(1, "뜸들이기", 25, 40),
-                    step(2, "1차 푸어", 65, 100),
-                    step(3, "2차 푸어", 85, 95)
+                    step(1, "Bloom", 25, 40),
+                    step(2, "First Pour", 65, 100),
+                    step(3, "Second Pour", 85, 95)
                 ],
                 tags: ["베리", "화사함"],
                 imageURL: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=80",
@@ -428,9 +428,9 @@ private extension RecipeRepository {
                 waterAmountMl: 270,
                 totalBrewTimeSec: 210,
                 steps: [
-                    step(1, "뜸들이기", 35, 45),
-                    step(2, "1차 푸어", 80, 140),
-                    step(3, "2차 푸어", 95, 85)
+                    step(1, "Bloom", 35, 45),
+                    step(2, "First Pour", 80, 140),
+                    step(3, "Second Pour", 95, 85)
                 ],
                 tags: ["달콤함", "허니"],
                 imageURL: "https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=1200&q=80",
@@ -458,9 +458,9 @@ private extension RecipeRepository {
                 waterAmountMl: 350,
                 totalBrewTimeSec: 260,
                 steps: [
-                    step(1, "뜸들이기", 45, 60),
-                    step(2, "메인 푸어", 140, 220),
-                    step(3, "마무리", 75, 70)
+                    step(1, "Bloom", 45, 60),
+                    step(2, "Main Pour", 140, 220),
+                    step(3, "Finish", 75, 70)
                 ],
                 tags: ["티라이크", "게이샤"],
                 imageURL: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
@@ -488,10 +488,10 @@ private extension RecipeRepository {
                 waterAmountMl: 320,
                 totalBrewTimeSec: 285,
                 steps: [
-                    step(1, "푸어", 50, 320),
-                    step(2, "브레이크", 45, nil),
-                    step(3, "스쿱", 40, nil),
-                    step(4, "프레스", 150, nil)
+                    step(1, "Pour", 50, 320),
+                    step(2, "Break", 45, nil),
+                    step(3, "Scoop", 40, nil),
+                    step(4, "Press", 150, nil)
                 ],
                 tags: ["주말", "바디감"],
                 imageURL: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1200&q=80",
@@ -519,9 +519,9 @@ private extension RecipeRepository {
                 waterAmountMl: 220,
                 totalBrewTimeSec: 130,
                 steps: [
-                    step(1, "뜸들이기", 20, 40),
-                    step(2, "메인 푸어", 40, 120),
-                    step(3, "프레스", 70, 60)
+                    step(1, "Bloom", 20, 40),
+                    step(2, "Main Pour", 40, 120),
+                    step(3, "Press", 70, 60)
                 ],
                 tags: ["여행", "빠른추출"],
                 imageURL: "https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=1200&q=80",
@@ -549,9 +549,9 @@ private extension RecipeRepository {
                 waterAmountMl: 240,
                 totalBrewTimeSec: 180,
                 steps: [
-                    step(1, "뜸들이기", 30, 45),
-                    step(2, "1차 푸어", 60, 120),
-                    step(3, "2차 푸어", 90, 75)
+                    step(1, "Bloom", 30, 45),
+                    step(2, "First Pour", 60, 120),
+                    step(3, "Second Pour", 90, 75)
                 ],
                 tags: ["출근전", "밝은산미"],
                 imageURL: "https://images.unsplash.com/photo-1494314671902-399b18174975?auto=format&fit=crop&w=1200&q=80",

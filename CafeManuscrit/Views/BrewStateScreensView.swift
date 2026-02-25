@@ -92,7 +92,7 @@ struct BrewLabHeaderView: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(L10n.text("brew.lab.title", default: "Brew Lab"))
-                    .font(.custom("Inter", size: 24))
+                    .font(.app(size: 24))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: "1F1A16"))
 
@@ -104,7 +104,7 @@ struct BrewLabHeaderView: View {
             .frame(height: 30)
 
             Text(L10n.text("brew.lab.subtitle", default: "Dial in your recipe and track each extraction."))
-                .font(.custom("Inter", size: 12))
+                .font(.app(size: 12))
                 .foregroundColor(Color(hex: "6A625B"))
                 .lineSpacing(2)
         }
@@ -116,7 +116,7 @@ struct BrewTimerHeaderView: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(L10n.text("brew.timer.title", default: "Brew Timer"))
-                    .font(.custom("Inter", size: 24))
+                    .font(.app(size: 24))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: "1F1A16"))
                 Spacer()
@@ -126,7 +126,7 @@ struct BrewTimerHeaderView: View {
             .frame(height: 30)
 
             Text(L10n.text("brew.timer.subtitle", default: "Brew in progress · Keep extraction smooth"))
-                .font(.custom("Inter", size: 11))
+                .font(.app(size: 11))
                 .foregroundColor(Color(hex: "6A625B"))
         }
     }
@@ -159,7 +159,7 @@ struct BrewLogListView: View {
                         .frame(width: 72, height: 66)
                         .overlay(
                             Text(L10n.text("brew.delete", default: "Delete"))
-                                .font(.custom("Inter", size: 12))
+                                .font(.app(size: 12))
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                         )
@@ -182,12 +182,12 @@ struct BrewTimerHeroView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("01:12")
-                .font(.custom("Inter", size: 56))
+                .font(.app(size: 56))
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "2F2721"))
 
             Text(L10n.text("brew.timer.step.big", default: "CURRENT STEP 2 · BLOOM"))
-                .font(.custom("Inter", size: 20))
+                .font(.app(size: 20))
                 .fontWeight(.heavy)
                 .foregroundColor(Color(hex: "7C4A2D"))
 
@@ -205,11 +205,11 @@ struct BrewTimerHeroView: View {
                 .overlay(
                     VStack(spacing: 4) {
                         Text(L10n.text("brew.timer.animation.title", default: "BLOOM Animation Area"))
-                            .font(.custom("Inter", size: 16))
+                            .font(.app(size: 16))
                             .fontWeight(.bold)
                             .foregroundColor(Color(hex: "111827"))
                         Text(L10n.text("brew.timer.animation.subtitle", default: "Now: BLOOM (degas)  ·  Next: POUR"))
-                            .font(.custom("Inter", size: 13))
+                            .font(.app(size: 13))
                             .fontWeight(.semibold)
                             .foregroundColor(Color(hex: "4B5563"))
                     }
@@ -228,7 +228,7 @@ struct BrewTimerHeroView: View {
             .frame(height: 40)
 
             Text(ContentText.Brew.startedAdjustHint)
-                .font(.custom("Inter", size: 12))
+                .font(.app(size: 12))
                 .foregroundColor(Color(hex: "6A625B"))
                 .frame(maxWidth: .infinity, alignment: .center)
 
@@ -243,7 +243,7 @@ struct BrewTimerHeroView: View {
                 .frame(height: 42)
                 .overlay(
                     Text(L10n.text("brew.timer.stop", default: "Stop Brew"))
-                        .font(.custom("Inter", size: 13))
+                        .font(.app(size: 13))
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                 )

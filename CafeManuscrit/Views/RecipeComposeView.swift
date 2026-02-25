@@ -22,20 +22,20 @@ struct RecipeComposeView: View {
                 .padding(.top, 12)
                 .padding(.bottom, 16)
             }
-            .navigationTitle(L10n.text("compose.title", default: "레시피 작성"))
+            .navigationTitle(L10n.text("compose.title", default: "Create Recipe"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(L10n.text("common.close", default: "닫기")) {
+                    Button(L10n.text("common.close", default: "Close")) {
                         dismiss()
                     }
                 }
             }
             .alert(
-                L10n.text("compose.validation.alert", default: "입력값을 확인해 주세요"),
+                L10n.text("compose.validation.alert", default: "Please check your inputs."),
                 isPresented: $showValidationAlert
             ) {
-                Button(L10n.text("common.ok", default: "확인"), role: .cancel) {}
+                Button(L10n.text("common.ok", default: "OK"), role: .cancel) {}
             } message: {
                 Text(viewModel.validationSummary())
             }
@@ -54,23 +54,23 @@ struct RecipeComposeView: View {
 
     private var basicSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(L10n.text("compose.basic", default: "기본 정보"))
-                .font(.custom("Inter", size: 16))
+            Text(L10n.text("compose.basic", default: "Basic Info"))
+                .font(.app(size: 16))
                 .fontWeight(.semibold)
 
-            inputField(L10n.text("compose.field.title", default: "제목 (필수)"), text: $viewModel.draft.title)
-            inputField(L10n.text("compose.field.bean", default: "원두명 (필수)"), text: $viewModel.draft.beanName)
-            inputField(L10n.text("compose.field.summary", default: "설명"), text: $viewModel.draft.description)
+            inputField(L10n.text("compose.field.title", default: "Title (required)"), text: $viewModel.draft.title)
+            inputField(L10n.text("compose.field.bean", default: "Bean name (required)"), text: $viewModel.draft.beanName)
+            inputField(L10n.text("compose.field.summary", default: "Summary"), text: $viewModel.draft.description)
 
             HStack(spacing: 8) {
                 pickerField(
-                    title: L10n.text("compose.field.method", default: "추출 도구"),
+                    title: L10n.text("compose.field.method", default: "Brew Method"),
                     selection: $viewModel.draft.brewMethod,
                     values: BrewMethod.allCases,
                     label: { $0.displayName }
                 )
 
-                inputField(L10n.text("compose.field.water_temp", default: "물 온도(°C)"), text: $viewModel.draft.waterTemperature)
+                inputField(L10n.text("compose.field.water_temp", default: "Water Temp (°C)"), text: $viewModel.draft.waterTemperature)
             }
         }
         .padding(12)
@@ -85,8 +85,8 @@ struct RecipeComposeView: View {
     private var stepsSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(L10n.text("compose.steps", default: "브루 단계"))
-                    .font(.custom("Inter", size: 16))
+                Text(L10n.text("compose.steps", default: "Brew Steps"))
+                    .font(.app(size: 16))
                     .fontWeight(.semibold)
 
                 Spacer(minLength: 0)
@@ -96,8 +96,8 @@ struct RecipeComposeView: View {
                 } label: {
                     HStack(spacing: 4) {
                         PenIcon(kind: .add, size: 14, color: Color(hex: "8B5E3C"))
-                        Text(L10n.text("compose.steps.add", default: "단계 추가"))
-                            .font(.custom("Inter", size: 12))
+                        Text(L10n.text("compose.steps.add", default: "Add Step"))
+                            .font(.app(size: 12))
                             .fontWeight(.semibold)
                             .foregroundColor(Color(hex: "8B5E3C"))
                     }
@@ -109,7 +109,7 @@ struct RecipeComposeView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
                         Text("Step \(index + 1)")
-                            .font(.custom("Inter", size: 12))
+                            .font(.app(size: 12))
                             .fontWeight(.bold)
                             .foregroundColor(Color(hex: "7C4A2D"))
 
@@ -119,17 +119,17 @@ struct RecipeComposeView: View {
                             Button(role: .destructive) {
                                 viewModel.removeStep(id: step.id)
                             } label: {
-                                Text(L10n.text("compose.steps.delete", default: "삭제"))
-                                    .font(.custom("Inter", size: 11))
+                                Text(L10n.text("compose.steps.delete", default: "Delete"))
+                                    .font(.app(size: 11))
                             }
                         }
                     }
 
-                    inputField(L10n.text("compose.steps.desc", default: "단계 설명 (필수)"), text: bindingForStep(step.id).description)
+                    inputField(L10n.text("compose.steps.desc", default: "Step description (required)"), text: bindingForStep(step.id).description)
 
                     HStack(spacing: 8) {
-                        inputField(L10n.text("compose.steps.duration", default: "시간(초)"), text: bindingForStep(step.id).durationSec)
-                        inputField(L10n.text("compose.steps.water", default: "물(ml)"), text: bindingForStep(step.id).waterAmountMl)
+                        inputField(L10n.text("compose.steps.duration", default: "Duration (sec)"), text: bindingForStep(step.id).durationSec)
+                        inputField(L10n.text("compose.steps.water", default: "Water (ml)"), text: bindingForStep(step.id).waterAmountMl)
                     }
                 }
                 .padding(10)
@@ -160,7 +160,7 @@ struct RecipeComposeView: View {
                         showPreview = true
                     }
                 } label: {
-                    actionButton(title: L10n.text("compose.action.preview", default: "미리보기"), primary: false)
+                    actionButton(title: L10n.text("compose.action.preview", default: "Preview"), primary: false)
                 }
 
                 Button {
@@ -170,7 +170,7 @@ struct RecipeComposeView: View {
                         showTimerTest = true
                     }
                 } label: {
-                    actionButton(title: L10n.text("compose.action.timer_test", default: "타이머 테스트"), primary: false)
+                    actionButton(title: L10n.text("compose.action.timer_test", default: "Timer Test"), primary: false)
                 }
             }
 
@@ -185,8 +185,8 @@ struct RecipeComposeView: View {
             } label: {
                 actionButton(
                     title: viewModel.isSubmitting
-                        ? L10n.text("compose.action.publishing", default: "게시 중...")
-                        : L10n.text("compose.action.publish", default: "게시"),
+                        ? L10n.text("compose.action.publishing", default: "Publishing...")
+                        : L10n.text("compose.action.publish", default: "Publish"),
                     primary: true
                 )
             }
@@ -195,7 +195,7 @@ struct RecipeComposeView: View {
 
             if let message = viewModel.message {
                 Text(message)
-                    .font(.custom("Inter", size: 12))
+                    .font(.app(size: 12))
                     .foregroundColor(Color(hex: "6A625B"))
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -217,7 +217,7 @@ struct RecipeComposeView: View {
 
     private func inputField(_ placeholder: String, text: Binding<String>) -> some View {
         TextField(placeholder, text: text)
-            .font(.custom("Inter", size: 13))
+            .font(.app(size: 13))
             .padding(.horizontal, 10)
             .frame(height: 38)
             .background(Color.white)
@@ -253,7 +253,7 @@ struct RecipeComposeView: View {
 
     private func actionButton(title: String, primary: Bool) -> some View {
         Text(title)
-            .font(.custom("Inter", size: 13))
+            .font(.app(size: 13))
             .fontWeight(.bold)
             .foregroundColor(primary ? .white : Color(hex: "5A341F"))
             .frame(maxWidth: .infinity)
@@ -275,19 +275,19 @@ private struct RecipeDraftPreviewSheet: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(recipe.title)
-                        .font(.custom("Inter", size: 24))
+                        .font(.app(size: 24))
                         .fontWeight(.bold)
 
                     Text(recipe.summary)
-                        .font(.custom("Inter", size: 13))
+                        .font(.app(size: 13))
                         .foregroundColor(Color(hex: "6A625B"))
 
                     ForEach(recipe.steps) { step in
                         VStack(alignment: .leading, spacing: 2) {
                             Text("\(step.stepOrder). \(step.description)")
-                                .font(.custom("Inter", size: 13))
+                                .font(.app(size: 13))
                             Text("\(step.durationSec)s / \(Int(step.waterAmountMl ?? 0))ml")
-                                .font(.custom("Inter", size: 11))
+                                .font(.app(size: 11))
                                 .foregroundColor(Color(hex: "6A625B"))
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -301,7 +301,7 @@ private struct RecipeDraftPreviewSheet: View {
                 }
                 .padding(14)
             }
-            .navigationTitle(L10n.text("compose.preview", default: "미리보기"))
+            .navigationTitle(L10n.text("compose.preview", default: "Preview"))
             .navigationBarTitleDisplayMode(.inline)
         }
     }

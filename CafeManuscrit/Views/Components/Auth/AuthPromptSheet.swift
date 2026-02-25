@@ -15,12 +15,12 @@ struct AuthPromptSheet: View {
                 .padding(.top, 6)
 
             Text(title)
-                .font(.custom("Inter", size: 20))
+                .font(.app(size: 20))
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "1F1A16"))
 
             Text(message)
-                .font(.custom("Inter", size: 13))
+                .font(.app(size: 13))
                 .foregroundColor(Color(hex: "6A625B"))
                 .multilineTextAlignment(.center)
                 .lineSpacing(3)
@@ -31,7 +31,7 @@ struct AuthPromptSheet: View {
                 onLogin()
             } label: {
                 Text(L10n.text("auth.prompt.login", default: "로그인하기"))
-                    .font(.custom("Inter", size: 14))
+                    .font(.app(size: 14))
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -44,7 +44,7 @@ struct AuthPromptSheet: View {
                 dismiss()
             } label: {
                 Text(L10n.text("auth.prompt.later", default: "나중에"))
-                    .font(.custom("Inter", size: 14))
+                    .font(.app(size: 14))
                     .fontWeight(.semibold)
                     .foregroundColor(Color(hex: "6A625B"))
                     .frame(maxWidth: .infinity)

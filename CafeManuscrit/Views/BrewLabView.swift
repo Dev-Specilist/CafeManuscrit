@@ -110,7 +110,7 @@ struct BrewLabView: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(L10n.text("brew.lab.title", default: "Brew Lab"))
-                    .font(.custom("Inter", size: 24))
+                    .font(.app(size: 24))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: "1F1A16"))
 
@@ -131,7 +131,7 @@ struct BrewLabView: View {
             .frame(height: 30)
 
             Text(L10n.text("brew.lab.subtitle", default: "Dial in your recipe and track each extraction."))
-                .font(.custom("Inter", size: 12))
+                .font(.app(size: 12))
                 .foregroundColor(Color(hex: "6A625B"))
                 .lineSpacing(2)
         }
@@ -223,7 +223,7 @@ private struct SwipeToDeleteRow<Content: View>: View {
                         .font(.system(size: 14, weight: .bold))
                         .foregroundColor(.white)
                     Text(deleteTitle)
-                        .font(.custom("Inter", size: 9))
+                        .font(.app(size: 9))
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                 }

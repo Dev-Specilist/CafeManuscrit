@@ -20,17 +20,17 @@ struct RecipeFeedCard: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(recipe.title)
-                    .font(.custom("Inter", size: 16))
+                    .font(.app(size: 16))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: "1F1A16"))
                     .lineLimit(2)
 
                 Text("by \(recipe.authorName)")
-                    .font(.custom("Inter", size: 11))
+                    .font(.app(size: 11))
                     .foregroundColor(Color(hex: "6A625B"))
 
                 Text(recipe.cardMetaLine)
-                    .font(.custom("Inter", size: 11))
+                    .font(.app(size: 11))
                     .foregroundColor(Color(hex: "8B5E3C"))
                     .lineLimit(1)
 
@@ -38,7 +38,7 @@ struct RecipeFeedCard: View {
                     HStack(spacing: 4) {
                         PenIcon(kind: .star, size: 12, color: Color(hex: "F4A261"))
                         Text("\(recipe.likeCount)")
-                            .font(.custom("Inter", size: 10))
+                            .font(.app(size: 10))
                             .foregroundColor(Color(hex: "5E5852"))
                     }
 
@@ -46,7 +46,7 @@ struct RecipeFeedCard: View {
                         HStack(spacing: 4) {
                             PenIcon(kind: .bookmark, size: 12, color: Color(hex: "C18D59"))
                             Text(L10n.text("bookmark.saved", default: "Saved"))
-                                .font(.custom("Inter", size: 10))
+                                .font(.app(size: 10))
                                 .foregroundColor(Color(hex: "5E5852"))
                         }
                     }

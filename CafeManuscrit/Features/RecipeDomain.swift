@@ -272,18 +272,18 @@ struct RecipeDraft: Equatable {
     var validationErrors: [String] {
         var errors: [String] = []
         if title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append(L10n.text("compose.validation.title", default: "제목은 필수입니다."))
+            errors.append(L10n.text("compose.validation.title", default: "Title is required."))
         }
         if beanName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append(L10n.text("compose.validation.bean", default: "원두명은 필수입니다."))
+            errors.append(L10n.text("compose.validation.bean", default: "Bean name is required."))
         }
         if brewMethod == nil {
-            errors.append(L10n.text("compose.validation.method", default: "추출 도구를 선택해 주세요."))
+            errors.append(L10n.text("compose.validation.method", default: "Select a brew method."))
         }
         if steps.isEmpty {
-            errors.append(L10n.text("compose.validation.steps.empty", default: "최소 1개 이상의 단계를 입력해 주세요."))
+            errors.append(L10n.text("compose.validation.steps.empty", default: "Add at least one step."))
         } else if steps.contains(where: { !$0.isValid }) {
-            errors.append(L10n.text("compose.validation.steps.invalid", default: "모든 단계의 설명과 시간을 올바르게 입력해 주세요."))
+            errors.append(L10n.text("compose.validation.steps.invalid", default: "Each step needs a description and duration."))
         }
         return errors
     }

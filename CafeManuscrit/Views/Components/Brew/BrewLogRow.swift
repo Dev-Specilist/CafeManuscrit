@@ -8,11 +8,11 @@ struct BrewLogRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
-                .font(.custom("Inter", size: 14))
+                .font(.app(size: 14))
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "2F2721"))
             Text(subtitle)
-                .font(.custom("Inter", size: 11))
+                .font(.app(size: 11))
                 .foregroundColor(Color(hex: "6A625B"))
         }
         .frame(maxWidth: .infinity, alignment: .leading)

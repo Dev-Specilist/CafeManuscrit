@@ -40,7 +40,7 @@ struct BrewTimerView: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(L10n.text("brew.timer.title", default: "Brew Timer"))
-                    .font(.custom("Inter", size: 24))
+                    .font(.app(size: 24))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: "1F1A16"))
                 Spacer()
@@ -57,7 +57,7 @@ struct BrewTimerView: View {
             .frame(height: 30)
 
             Text(L10n.text("brew.timer.subtitle", default: "Brew in progress · Keep extraction smooth"))
-                .font(.custom("Inter", size: 11))
+                .font(.app(size: 11))
                 .foregroundColor(Color(hex: "6A625B"))
         }
     }
@@ -65,12 +65,12 @@ struct BrewTimerView: View {
     private var timerHero: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(viewModel.remainingText)
-                .font(.custom("Inter", size: 56))
+                .font(.app(size: 56))
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "2F2721"))
 
             Text(stepHeadline)
-                .font(.custom("Inter", size: 20))
+                .font(.app(size: 20))
                 .fontWeight(.heavy)
                 .foregroundColor(Color(hex: "7C4A2D"))
         }
@@ -99,12 +99,12 @@ struct BrewTimerView: View {
             .overlay(
                 VStack(spacing: 4) {
                     Text(L10n.text("brew.timer.animation.title", default: "BLOOM Animation Area"))
-                        .font(.custom("Inter", size: 16))
+                        .font(.app(size: 16))
                         .fontWeight(.bold)
                         .foregroundColor(Color(hex: "111827"))
 
                     Text(animationSubtitle)
-                        .font(.custom("Inter", size: 12))
+                        .font(.app(size: 12))
                         .fontWeight(.semibold)
                         .foregroundColor(Color(hex: "4B5563"))
                 }
@@ -157,7 +157,7 @@ struct BrewTimerView: View {
             .frame(height: 42)
             .overlay(
                 Text(L10n.text("brew.timer.stop", default: "Stop Brew"))
-                    .font(.custom("Inter", size: 13))
+                    .font(.app(size: 13))
                     .fontWeight(.bold)
                     .foregroundColor(.white)
             )

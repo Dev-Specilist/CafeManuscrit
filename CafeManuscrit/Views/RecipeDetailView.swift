@@ -6,7 +6,6 @@ struct RecipeDetailView: View {
     @EnvironmentObject private var appViewModel: AppViewModel
     @EnvironmentObject private var repository: RecipeRepository
 
-    @State private var showLoginPrompt = false
     @State private var showTimer = false
     @State private var toastMessage: String?
     @State private var isLikeLoading = false
@@ -35,23 +34,16 @@ struct RecipeDetailView: View {
                 }
             } else {
                 VStack(spacing: 12) {
-                    Text(L10n.text("detail.not_found", default: "레시피를 찾을 수 없습니다."))
-                        .font(.custom("Inter", size: 16))
+                    Text(L10n.text("detail.not_found", default: "Recipe not found."))
+                        .font(.app(size: 16))
                         .foregroundColor(Color(hex: "6A625B"))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(hex: "FFFFFF"))
             }
         }
-        .navigationTitle(L10n.text("detail.title", default: "레시피 상세"))
+        .navigationTitle(L10n.text("detail.title", default: "Recipe Detail"))
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $showLoginPrompt) {
-            AuthPromptSheet(
-                title: L10n.text("auth.prompt.title", default: "로그인이 필요합니다"),
-                message: L10n.text("auth.prompt.message", default: "좋아요, 북마크, 글쓰기는 로그인 후 이용할 수 있어요."),
-                onLogin: { appViewModel.requireLogin() }
-            )
-        }
         .fullScreenCover(isPresented: $showTimer) {
             if let recipe {
                 BrewTimerView(recipe: recipe)
@@ -60,7 +52,7 @@ struct RecipeDetailView: View {
         .overlay(alignment: .top) {
             if let toastMessage {
                 Text(toastMessage)
-                    .font(.custom("Inter", size: 12))
+                    .font(.app(size: 12))
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
                     .padding(.horizontal, 12)
@@ -89,17 +81,17 @@ struct RecipeDetailView: View {
             .clipShape(RoundedRectangle(cornerRadius: 16))
 
             Text(recipe.title)
-                .font(.custom("Inter", size: 24))
+                .font(.app(size: 24))
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "1F1A16"))
 
             Text("by \(recipe.authorName)")
-                .font(.custom("Inter", size: 13))
+                .font(.app(size: 13))
                 .foregroundColor(Color(hex: "6A625B"))
 
             if !recipe.summary.isEmpty {
                 Text(recipe.summary)
-                    .font(.custom("Inter", size: 13))
+                    .font(.app(size: 13))
                     .foregroundColor(Color(hex: "5E5852"))
             }
         }
@@ -107,29 +99,29 @@ struct RecipeDetailView: View {
 
     private func metaSection(_ recipe: RecipeItem) -> some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(L10n.text("detail.meta", default: "메타 정보"))
-                .font(.custom("Inter", size: 16))
+            Text(L10n.text("detail.meta", default: "Meta"))
+                .font(.app(size: 16))
                 .fontWeight(.semibold)
 
             VStack(spacing: 8) {
                 detailMetaRow(
-                    L10n.text("detail.bean", default: "원두"),
+                    L10n.text("detail.bean", default: "Bean"),
                     "\(recipe.beanName) · \(recipe.beanOrigin) · \(recipe.roastLevel.displayName)"
                 )
                 detailMetaRow(
-                    L10n.text("detail.brew", default: "추출"),
+                    L10n.text("detail.brew", default: "Brew"),
                     "\(recipe.brewMethod.displayName) · \(recipe.grindSize.title)"
                 )
                 detailMetaRow(
-                    L10n.text("detail.grinder", default: "그라인더"),
+                    L10n.text("detail.grinder", default: "Grinder"),
                     "\(recipe.grinderName) \(recipe.grinderSetting)"
                 )
                 detailMetaRow(
-                    L10n.text("detail.water", default: "물"),
+                    L10n.text("detail.water", default: "Water"),
                     "\(recipe.waterTemperature)°C · \(recipe.coffeeRatioText)"
                 )
                 detailMetaRow(
-                    L10n.text("detail.total", default: "총 추출 시간"),
+                    L10n.text("detail.total", default: "Total Brew Time"),
                     recipe.totalTimeText
                 )
             }
@@ -146,13 +138,13 @@ struct RecipeDetailView: View {
     private func detailMetaRow(_ title: String, _ value: String) -> some View {
         HStack(alignment: .top, spacing: 8) {
             Text(title)
-                .font(.custom("Inter", size: 12))
+                .font(.app(size: 12))
                 .fontWeight(.semibold)
                 .foregroundColor(Color(hex: "6A625B"))
                 .frame(width: 84, alignment: .leading)
 
             Text(value)
-                .font(.custom("Inter", size: 12))
+                .font(.app(size: 12))
                 .foregroundColor(Color(hex: "2F2721"))
 
             Spacer(minLength: 0)
@@ -161,26 +153,26 @@ struct RecipeDetailView: View {
 
     private func stepSection(_ recipe: RecipeItem) -> some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(L10n.text("detail.steps", default: "브루 스텝"))
-                .font(.custom("Inter", size: 16))
+            Text(L10n.text("detail.steps", default: "Brew Steps"))
+                .font(.app(size: 16))
                 .fontWeight(.semibold)
 
             VStack(spacing: 8) {
                 ForEach(recipe.steps) { step in
                     HStack(alignment: .top, spacing: 10) {
                         Text("\(step.stepOrder)")
-                            .font(.custom("Inter", size: 12))
+                            .font(.app(size: 12))
                             .fontWeight(.bold)
                             .foregroundColor(Color(hex: "8B5E3C"))
                             .frame(width: 20, alignment: .leading)
 
                         VStack(alignment: .leading, spacing: 2) {
                             Text(step.description)
-                                .font(.custom("Inter", size: 13))
+                                .font(.app(size: 13))
                                 .foregroundColor(Color(hex: "1F1A16"))
 
                             Text("\(step.durationSec)s · \(Int(step.waterAmountMl ?? 0))ml")
-                                .font(.custom("Inter", size: 11))
+                                .font(.app(size: 11))
                                 .foregroundColor(Color(hex: "6A625B"))
                         }
 
@@ -203,7 +195,7 @@ struct RecipeDetailView: View {
                 onTapLike(recipe)
             } label: {
                 Text(recipe.isLiked ? "♥ \(recipe.likeCount)" : "♡ \(recipe.likeCount)")
-                    .font(.custom("Inter", size: 13))
+                    .font(.app(size: 13))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: "7C4A2D"))
                     .frame(minWidth: 72)
@@ -216,8 +208,8 @@ struct RecipeDetailView: View {
             Button {
                 onTapBookmark(recipe)
             } label: {
-                Text(recipe.isBookmarked ? L10n.text("detail.bookmark.on", default: "저장됨") : L10n.text("detail.bookmark.off", default: "북마크"))
-                    .font(.custom("Inter", size: 13))
+                Text(recipe.isBookmarked ? L10n.text("detail.bookmark.on", default: "Saved") : L10n.text("detail.bookmark.off", default: "Bookmark"))
+                    .font(.app(size: 13))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: "7C4A2D"))
                     .frame(minWidth: 84)
@@ -230,8 +222,8 @@ struct RecipeDetailView: View {
             Button {
                 showTimer = true
             } label: {
-                Text(L10n.text("detail.timer.start", default: "타이머 시작"))
-                    .font(.custom("Inter", size: 14))
+                Text(L10n.text("detail.timer.start", default: "Start Timer"))
+                    .font(.app(size: 14))
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -248,7 +240,7 @@ struct RecipeDetailView: View {
 
     private func onTapLike(_ recipe: RecipeItem) {
         guard appViewModel.isLoggedIn else {
-            showLoginPrompt = true
+            appViewModel.requireLogin()
             return
         }
 
@@ -269,7 +261,7 @@ struct RecipeDetailView: View {
 
     private func onTapBookmark(_ recipe: RecipeItem) {
         guard appViewModel.isLoggedIn else {
-            showLoginPrompt = true
+            appViewModel.requireLogin()
             return
         }
 

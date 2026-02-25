@@ -6,7 +6,7 @@ struct BrewStatChip: View {
 
     var body: some View {
         Text(text)
-            .font(.custom("Inter", size: 11))
+            .font(.app(size: 11))
             .fontWeight(.semibold)
             .foregroundColor(Color(hex: "5B524B"))
             .frame(maxWidth: .infinity, minHeight: 34, alignment: .center)
@@ -33,7 +33,7 @@ struct BrewStepChip: View {
             )
             .overlay(
                 Text(label)
-                    .font(.custom("Inter", size: 12))
+                    .font(.app(size: 12))
                     .fontWeight(selected ? .heavy : .bold)
                     .foregroundColor(selected ? Color(hex: "5A341F") : Color(hex: "6B7280"))
             )
@@ -54,7 +54,7 @@ struct BrewControlButton: View {
             )
             .overlay(
                 Text(text)
-                    .font(.custom("Inter", size: 12))
+                    .font(.app(size: 12))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: "6A625B"))
             )
@@ -75,7 +75,7 @@ struct BrewSecondaryAction: View {
             )
             .overlay(
                 Text(text)
-                    .font(.custom("Inter", size: 12))
+                    .font(.app(size: 12))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: "5A341F"))
             )

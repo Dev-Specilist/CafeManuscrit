@@ -24,7 +24,7 @@ struct HomeFeaturedRecipeCard: View {
 
             VStack(alignment: .leading, spacing: 5) {
                 Text(title)
-                    .font(.custom("Inter", size: 14))
+                    .font(.app(size: 14))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: "1F1A16"))
                 Text(
@@ -33,11 +33,11 @@ struct HomeFeaturedRecipeCard: View {
                         author
                     )
                 )
-                .font(.custom("Inter", size: 10))
+                .font(.app(size: 10))
                 .fontWeight(.medium)
                 .foregroundColor(Color(hex: "6E6862"))
                 Text(meta)
-                    .font(.custom("Inter", size: 10))
+                    .font(.app(size: 10))
                     .fontWeight(.medium)
                     .foregroundColor(Color(hex: "A97442"))
             }
@@ -60,37 +60,53 @@ struct HomeLatestRecipeRow: View {
     let title: String
     let subtitle: String
     let imageURL: String
+    let isBookmarked: Bool
+    let onTap: () -> Void
+    let onBookmarkTap: () -> Void
 
     var body: some View {
-        HStack(spacing: 14) {
-            AsyncImage(url: URL(string: imageURL)) { phase in
-                switch phase {
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFill()
-                default:
-                    Color(hex: "EDE6DE")
+        HStack(spacing: 10) {
+            Button(action: onTap) {
+                HStack(spacing: 14) {
+                    AsyncImage(url: URL(string: imageURL)) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFill()
+                        default:
+                            Color(hex: "EDE6DE")
+                        }
+                    }
+                    .frame(width: 88, height: 88)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(title)
+                            .font(.app(size: 16))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(hex: "1F1A16"))
+
+                        Text(subtitle)
+                            .font(.app(size: 11))
+                            .foregroundColor(Color(hex: "6C6762"))
+                            .lineSpacing(2)
+                    }
+
+                    Spacer(minLength: 0)
                 }
+                .contentShape(Rectangle())
             }
-            .frame(width: 88, height: 88)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .buttonStyle(.plain)
+            .frame(maxWidth: .infinity, alignment: .leading)
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(.custom("Inter", size: 16))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color(hex: "1F1A16"))
-
-                Text(subtitle)
-                    .font(.custom("Inter", size: 11))
-                    .foregroundColor(Color(hex: "6C6762"))
-                    .lineSpacing(2)
+            Button(action: onBookmarkTap) {
+                Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(isBookmarked ? Color(hex: "C18D59") : Color(hex: "B5ADA5"))
+                    .frame(width: 24, height: 24)
             }
-
-            Spacer()
-
-            PenIcon(kind: .bookmark, size: 18, color: Color(hex: "C18D59"))
+            .buttonStyle(.plain)
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 10)

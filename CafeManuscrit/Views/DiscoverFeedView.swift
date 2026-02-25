@@ -78,7 +78,7 @@ struct DiscoverFeedView: View {
     private var feedTop: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(L10n.text("discover.feed.title", default: "Discover Feed"))
-                .font(.custom("Inter", size: 22))
+                .font(.app(size: 22))
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "1F1A16"))
 
@@ -89,7 +89,7 @@ struct DiscoverFeedView: View {
                     L10n.text("discover.feed.search.placeholder", default: "Search beans, recipes, cafes"),
                     text: $query
                 )
-                .font(.custom("Inter", size: 12))
+                .font(.app(size: 12))
                 .fontWeight(.medium)
                 .foregroundColor(Color(hex: "5A534D"))
 
@@ -128,7 +128,7 @@ struct DiscoverFeedView: View {
                         .frame(width: 54, height: 54)
 
                     Text(story.name)
-                        .font(.custom("Inter", size: 11))
+                        .font(.app(size: 11))
                         .fontWeight(.semibold)
                         .foregroundColor(Color(hex: "5E5650"))
                         .lineLimit(1)
@@ -151,7 +151,7 @@ struct DiscoverFeedView: View {
 
             if posts.isEmpty {
                 Text(L10n.text("search.empty.subtitle", default: "조건을 조금 완화해 보세요"))
-                    .font(.custom("Inter", size: 12))
+                    .font(.app(size: 12))
                     .foregroundColor(Color(hex: "6A625B"))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 18)
@@ -180,7 +180,7 @@ private struct DiscoverPostCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(post.authorTag)
-                .font(.custom("Inter", size: 13))
+                .font(.app(size: 13))
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "2F2721"))
 

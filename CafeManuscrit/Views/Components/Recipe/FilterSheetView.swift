@@ -10,7 +10,7 @@ struct FilterSheetView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(L10n.text("filter.title", default: "필터"))
-                .font(.custom("Inter", size: 20))
+                .font(.app(size: 20))
                 .fontWeight(.bold)
                 .foregroundColor(Color(hex: "1F1A16"))
 
@@ -40,7 +40,7 @@ struct FilterSheetView: View {
                     onClear()
                 } label: {
                     Text(L10n.text("filter.clear", default: "초기화"))
-                        .font(.custom("Inter", size: 14))
+                        .font(.app(size: 14))
                         .fontWeight(.semibold)
                         .foregroundColor(Color(hex: "6A625B"))
                         .frame(maxWidth: .infinity)
@@ -56,7 +56,7 @@ struct FilterSheetView: View {
                     onApply()
                 } label: {
                     Text(L10n.text("filter.apply", default: "적용"))
-                        .font(.custom("Inter", size: 14))
+                        .font(.app(size: 14))
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
@@ -79,7 +79,7 @@ struct FilterSheetView: View {
     ) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
-                .font(.custom("Inter", size: 13))
+                .font(.app(size: 13))
                 .fontWeight(.semibold)
                 .foregroundColor(Color(hex: "4E443D"))
 
